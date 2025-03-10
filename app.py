@@ -178,8 +178,8 @@ conf = ConnectionConfig(
     MAIL_FROM = EMAIL,
     MAIL_PORT = 465,
     MAIL_SERVER = "smtp.gmail.com",
-    MAIL_STARTTLS = False,
-    MAIL_SSL_TLS = True,
+    MAIL_STARTTLS = True,
+    MAIL_SSL_TLS = False,
     USE_CREDENTIALS = True,
     VALIDATE_CERTS = True
 )
