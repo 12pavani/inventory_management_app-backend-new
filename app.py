@@ -218,10 +218,19 @@ async def send_email(product_id: int, content: EmailContent):
     await fm.send_message(message)
     return {"status": "ok"}
 
+# register_tortoise(
+#     app,
+#     db_url = "sqlite://database.sqlite3",
+#     modules={"models": ["models"]},  
+#     generate_schemas=True,
+#     add_exception_handlers=True
+# )
+
+
 register_tortoise(
     app,
-    db_url = "sqlite://database.sqlite3",
-    modules={"models": ["models"]},  
+    db_url="postgres://db_iqfe_user:VuF2qTCXNELJhtOncW9tImXeeHSgOEWv@dpg-cv7g5q3tq21c73apj0dg-a/db_iqfe",
+    modules={"models": ["models"]},
     generate_schemas=True,
     add_exception_handlers=True
 )
