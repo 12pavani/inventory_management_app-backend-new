@@ -19,7 +19,11 @@ from dotenv import load_dotenv, dotenv_values
 load_dotenv()
 
 # credentials 
-credentials = dotenv_values(".env")
+# #credentials = dotenv_values(".env")
+
+EMAIL = os.getenv("EMAIL")
+PASS = os.getenv("PASS")
+
 
 # adding CORS header
 from fastapi.middleware.cors import CORSMiddleware
@@ -33,13 +37,26 @@ origins = [
 ]
 
 # add middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins = origins,
-    allow_credentials = True,
-    allow_methods = ["*"],
-    allow_headers = ["*"]
+# # app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins = origins,
+#     allow_credentials = True,
+#     allow_methods = ["*"],
+#     allow_headers = ["*"]
+# )
+
+conf = ConnectionConfig(
+    MAIL_USERNAME = EMAIL,
+    MAIL_PASSWORD = PASS,
+    MAIL_FROM = EMAIL,
+    MAIL_PORT = 465,
+    MAIL_SERVER = "smtp.gmail.com",
+    MAIL_STARTTLS = False,
+    MAIL_SSL_TLS = True,
+    USE_CREDENTIALS = True,
+    VALIDATE_CERTS = True
 )
+
 
 @app.get('/')
 def index():
@@ -218,7 +235,7 @@ async def send_email(product_id: int, content: EmailContent):
     await fm.send_message(message)
     return {"status": "ok"}
 
-# register_tortoise(
+# # register_tortoise(
 #     app,
 #     db_url = "sqlite://database.sqlite3",
 #     modules={"models": ["models"]},  
