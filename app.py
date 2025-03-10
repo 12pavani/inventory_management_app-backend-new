@@ -204,31 +204,20 @@ async def send_email(product_id: int, content: EmailContent):
     supplier_email = [supplier.email]
     
     html = f"""
-    <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
-        <h3 style="color: #007bff;">PavLTD - Inventory Management</h3> 
-        <hr>
-        <p>We hope you're doing well. Below are the details regarding the product update in our <strong>Inventory Management System</strong>.</p>
-        
-        <p><strong>Product Details:</strong></p>
-        <ul>
-            <li><strong>Product ID:</strong> {content.product_id}</li>
-            <li><strong>Name:</strong> {content.product_name}</li>
-            <li><strong>Supplier's Name:</strong> {content.supplier_name}</li>
-            <li><strong>Company:</strong> {content.company}</li>
-            <li><strong>Email Address:</strong> {content.email}</li>
-            <li><strong>Phone:</strong> {content.phone}</li>
-        </ul>
-        
-        <p><strong>{content.email_title}</strong></p>
-        <p>{content.email_content}</p>
+        <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+            <h3 style="color: #007bff;">PavLTD - Inventory Management</h3> 
+            <hr>
+            <p><strong>Subject:</strong> {content.subject}</p>
+            <p>{content.message}</p>
+    
+            <p>If you have any questions, feel free to reach out.</p>
+            <hr>
+            <p>Best Regards,</p>
+            <h4 style="color: #007bff;">PavLTD Team</h4>
+            <p><a href="https://inventory-management-frontend-5bio.onrender.com" style="color: #007bff; text-decoration: none;">Visit Our Platform</a></p>
+        </div>
+    """
 
-        <p>If you have any questions or need assistance, feel free to reach out. We are here to support you in optimizing your inventory processes.</p>
-        <hr>
-        <p>Best Regards,</p>
-        <h4 style="color: #007bff;">PavLTD Team</h4>
-        <p><a href="https://inventory-management-frontend-5bio.onrender.com" style="color: #007bff; text-decoration: none;">Visit Our Platform</a></p>
-    </div>
-"""
 
     message = MessageSchema(
         subject=content.subject,
