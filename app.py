@@ -18,8 +18,9 @@ from dotenv import load_dotenv, dotenv_values
 
 load_dotenv()
 
+# &&
 # credentials 
-# #credentials = dotenv_values(".env")
+# credentials = dotenv_values(".env")
 
 EMAIL = os.getenv("EMAIL")
 PASS = os.getenv("PASS")
@@ -44,8 +45,6 @@ app.add_middleware(
     allow_methods = ["*"],
     allow_headers = ["*"]
 )
-
-
 
 @app.get('/')
 def index():
@@ -160,6 +159,19 @@ class EmailContent(BaseModel):
     subject: str 
 
 # Email configuration
+# &&
+# conf = ConnectionConfig(
+#     MAIL_USERNAME =credentials['EMAIL'],
+#     MAIL_PASSWORD = credentials['PASS'],
+#     MAIL_FROM = credentials['EMAIL'],
+#     MAIL_PORT = 465,
+#     MAIL_SERVER = "smtp.gmail.com",
+#     MAIL_STARTTLS = False,
+#     MAIL_SSL_TLS = True,
+#     USE_CREDENTIALS = True,
+#     VALIDATE_CERTS = True
+# )
+
 conf = ConnectionConfig(
     MAIL_USERNAME = EMAIL,
     MAIL_PASSWORD = PASS,
@@ -224,7 +236,8 @@ async def send_email(product_id: int, content: EmailContent):
     await fm.send_message(message)
     return {"status": "ok"}
 
-# # register_tortoise(
+# &&
+# register_tortoise(
 #     app,
 #     db_url = "sqlite://database.sqlite3",
 #     modules={"models": ["models"]},  
