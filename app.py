@@ -37,25 +37,14 @@ origins = [
 ]
 
 # add middleware
-# # app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins = origins,
-#     allow_credentials = True,
-#     allow_methods = ["*"],
-#     allow_headers = ["*"]
-# )
-
-conf = ConnectionConfig(
-    MAIL_USERNAME = EMAIL,
-    MAIL_PASSWORD = PASS,
-    MAIL_FROM = EMAIL,
-    MAIL_PORT = 465,
-    MAIL_SERVER = "smtp.gmail.com",
-    MAIL_STARTTLS = False,
-    MAIL_SSL_TLS = True,
-    USE_CREDENTIALS = True,
-    VALIDATE_CERTS = True
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = origins,
+    allow_credentials = True,
+    allow_methods = ["*"],
+    allow_headers = ["*"]
 )
+
 
 
 @app.get('/')
@@ -172,9 +161,9 @@ class EmailContent(BaseModel):
 
 # Email configuration
 conf = ConnectionConfig(
-    MAIL_USERNAME =credentials['EMAIL'],
-    MAIL_PASSWORD = credentials['PASS'],
-    MAIL_FROM = credentials['EMAIL'],
+    MAIL_USERNAME = EMAIL,
+    MAIL_PASSWORD = PASS,
+    MAIL_FROM = EMAIL,
     MAIL_PORT = 465,
     MAIL_SERVER = "smtp.gmail.com",
     MAIL_STARTTLS = False,
