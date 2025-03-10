@@ -207,17 +207,22 @@ async def send_email(product_id: int, content: EmailContent):
     <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
         <h3 style="color: #007bff;">PavLTD - Inventory Management</h3> 
         <hr>
-        <p>We hope you're doing well. We are excited to share updates regarding our <strong>Inventory Management System</strong>. Our platform helps you efficiently manage stock, track real-time inventory, and streamline business operations.</p>
-        <p>{content.message}</p>
-        <p>Key Features of Our Inventory Management System:</p>
+        <p>We hope you're doing well. Below are the details regarding the product update in our <strong>Inventory Management System</strong>.</p>
+        
+        <p><strong>Product Details:</strong></p>
         <ul>
-            <li>Real-time inventory tracking</li>
-            <li>Automated stock alerts</li>
-            <li>Easy-to-use dashboard</li>
-            <li>Secure data storage</li>
-            <li>Seamless integration with existing workflows</li>
+            <li><strong>Product ID:</strong> {content.product_id}</li>
+            <li><strong>Name:</strong> {content.product_name}</li>
+            <li><strong>Supplier's Name:</strong> {content.supplier_name}</li>
+            <li><strong>Company:</strong> {content.company}</li>
+            <li><strong>Email Address:</strong> {content.email}</li>
+            <li><strong>Phone:</strong> {content.phone}</li>
         </ul>
-        <p>If you have any questions or need assistance, feel free to reach out. We would love to hear your feedback and help you optimize your inventory processes.</p>
+        
+        <p><strong>{content.email_title}</strong></p>
+        <p>{content.email_content}</p>
+
+        <p>If you have any questions or need assistance, feel free to reach out. We are here to support you in optimizing your inventory processes.</p>
         <hr>
         <p>Best Regards,</p>
         <h4 style="color: #007bff;">PavLTD Team</h4>
